@@ -9,7 +9,7 @@ Frontend básico en HTML, CSS y JavaScript. Primera demo de una plataforma para 
 - Tres ofertas ficticias, filtro por modalidad y guardadas durante la visita.
 - Navegación por teclado, etiquetas de formulario y mensajes accesibles.
 
-**Es una demo:** no hay autenticación, persistencia, consultas a Supabase ni matching con IA. El formulario no envía datos; sus respuestas permanecen en la página abierta. No se publica el catálogo real.
+**Es una demo:** el formulario no envía datos y las ofertas son ficticias. La aplicación verifica la conexión con Supabase, pero todavía no tiene autenticación, persistencia ni matching con IA. No se publica el catálogo real.
 
 ## Ver en tu computadora
 
@@ -19,14 +19,14 @@ Abrí `public/index.html` en el navegador. No requiere instalación ni compilaci
 
 1. Importá este repositorio desde tu cuenta de Vercel.
 2. Usá la raíz del repositorio como **Root Directory**.
-3. Seleccioná **Other** como framework, dejá vacío el comando de build y usá **public** como directorio de salida. `vercel.json` ya define esta configuración.
-4. Publicá. Esta demo no requiere variables de entorno.
+3. En **Environment Variables**, agregá `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` con los valores de tu proyecto. Aplicalas a Production, Preview y Development.
+4. Publicá. Vercel detecta Next.js automáticamente.
 
 Referencia: https://vercel.com/docs/builds/configure-a-build
 
 ## Próximo paso: Supabase
 
-La arquitectura prevista para el MVP completo es Next.js + TypeScript, Supabase Auth y un backend de recomendaciones. Esta entrega HTML es la base visual inicial.
+La arquitectura prevista para el MVP completo es Next.js + TypeScript, Supabase Auth y un backend de recomendaciones. La ruta `/api/supabase-status` verifica que las variables públicas puedan comunicarse con Supabase, sin consultar tablas ni exponer información del catálogo.
 
 - Implementar registro e inicio de sesión con Supabase Auth.
 - Guardar el perfil con políticas RLS para que cada estudiante acceda solo a sus datos.

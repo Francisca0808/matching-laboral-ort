@@ -1,7 +1,4 @@
 {
-  "framework": null,
-  "buildCommand": "",
-  "outputDirectory": "public",
   "headers": [
     { "source": "/(.*)", "headers": [
       { "key": "X-Content-Type-Options", "value": "nosniff" },

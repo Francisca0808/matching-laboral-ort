@@ -14,6 +14,20 @@ const dialog = document.querySelector('#profile-dialog');
 const form = document.querySelector('#profile-form');
 let profileTrigger;
 
+async function checkSupabaseConnection() {
+  const status = document.querySelector('#connection-status');
+  try {
+    const response = await fetch('/api/supabase-status');
+    const result = await response.json();
+    if (!response.ok || !result.connected) throw new Error();
+    status.textContent = '● Base conectada';
+    status.style.color = '#4f7936';
+  } catch {
+    status.textContent = '● Base sin conectar';
+    status.style.color = '#a04f45';
+  }
+}
+
 function notify(message) {
   const toast = document.querySelector('#toast');
   clearTimeout(toastTimer);
@@ -74,3 +88,4 @@ form.addEventListener('submit', event => {
   notify(`${name || 'Tu perfil'}: formulario completado en la demo. La conexión y las recomendaciones reales están pendientes.`);
 });
 render();
+checkSupabaseConnection();

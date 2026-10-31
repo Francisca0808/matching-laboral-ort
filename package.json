@@ -2,11 +2,30 @@
   "name": "matching-laboral-ort",
   "version": "1.0.0",
   "private": true,
-  "scripts": { "dev": "next dev", "build": "next build", "start": "next start" },
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run lint && npm test && next build",
+    "start": "next start",
+    "test": "node --test tests/*.test.mjs",
+    "lint": "eslint ."
+  },
   "dependencies": {
-    "@supabase/supabase-js": "^2.49.4",
-    "next": "^15.3.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "@huggingface/transformers": "3.8.1",
+    "@supabase/supabase-js": "2.116.0",
+    "mammoth": "^1.13.0",
+    "next": "15.5.25",
+    "pdf-parse": "^2.4.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "pnpm@10.17.1",
+  "devDependencies": {
+    "eslint": "9.39.1",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "prettier": "3.6.2"
   }
 }

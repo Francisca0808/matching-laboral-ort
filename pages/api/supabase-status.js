@@ -1,13 +1,16 @@
-import { createClient } from '@supabase/supabase-js';
-
-export default async function handler(request, response) {
-  if (request.method !== 'GET') return response.status(405).json({ error: 'Método no permitido.' });
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-  if (!url || !key) return response.status(503).json({ connected: false, error: 'Faltan variables de Supabase.' });
+export default async function handler(req, res) {
+  res.setHeader("Cache-Control", "no-store");
+  if (req.method !== "GET") return res.status(405).json({ connected: false });
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL,
+    key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return res.status(503).json({ connected: false });
   try {
-    const { error } = await createClient(url, key, { auth: { persistSession: false } }).auth.getSession();
-    if (error) throw error;
-    return response.status(200).json({ connected: true });
-  } catch { return response.status(502).json({ connected: false, error: 'No se pudo conectar con Supabase.' }); }
+    const result = await fetch(`${url}/auth/v1/settings`, {
+      headers: { apikey: key },
+      signal: AbortSignal.timeout(5000),
+    });
+    return res.status(result.ok ? 200 : 502).json({ connected: result.ok });
+  } catch {
+    return res.status(502).json({ connected: false });
+  }
 }

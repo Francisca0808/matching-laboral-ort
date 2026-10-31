@@ -1,0 +1,23 @@
+{
+  "passed": [
+    "login de dos estudiantes y administrador",
+    "rutas privadas rechazan solicitudes sin sesión",
+    "roles verificados desde base",
+    "guardar y volver a leer perfil completo",
+    "persistencia después de cerrar sesión y volver a entrar",
+    "111 ofertas únicas, score 0 a 100, explicación y orden global",
+    "111 enlaces originales HTTPS",
+    "búsqueda y filtros",
+    "guardar oferta y evitar duplicados",
+    "descartar, consultar descartadas y recuperar",
+    "subir, reemplazar, referenciar y descargar CV privado",
+    "rechazar archivo que no es PDF",
+    "aislamiento de perfil, CV e interacciones entre estudiantes",
+    "estudiante no modifica ofertas ni accede al panel administrador",
+    "administrador sin perfiles, CV ni rankings de estudiantes",
+    "administrador crea, revisa, edita y elimina oferta de prueba",
+    "cierre de sesiones de prueba"
+  ],
+  "date": "2026-09-28T12:12:20.480Z",
+  "registration": "Bloqueado: Supabase rechaza dominio reservado; confirmar envío con correo real."
+}
